@@ -32,7 +32,7 @@ const bookinstance_update_post = asyncHandler(async (req, res, next) => {
   res.send("NOT IMPLEMENTED: BookInstance update POST");
 });
 
-export {
+export default {
   bookinstance_list,
   bookinstance_detail,
   bookinstance_create_get,

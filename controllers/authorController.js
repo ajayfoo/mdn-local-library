@@ -32,7 +32,7 @@ const author_update_post = asyncHandler(async (req, res, next) => {
   res.send("NOT IMPLEMENTED: Author update POST");
 });
 
-export {
+export default {
   author_list,
   author_detail,
   author_create_get,

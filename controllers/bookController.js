@@ -36,7 +36,7 @@ const book_update_post = asyncHandler(async (req, res, next) => {
   res.send("NOT IMPLEMENTED: Book update POST");
 });
 
-export {
+export default {
   index,
   book_list,
   book_detail,

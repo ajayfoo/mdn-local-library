@@ -32,7 +32,7 @@ const genre_update_post = asyncHandler(async (req, res, next) => {
   res.send("NOT IMPLEMENTED: Genre update POST");
 });
 
-export {
+export default {
   genre_list,
   genre_detail,
   genre_create_get,

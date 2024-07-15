@@ -3,12 +3,18 @@ import express from 'express';
 import { join } from 'path';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
+import mongoose from 'mongoose';
 
 import indexRouter from './routes/index.js';
 import usersRouter from './routes/users.js';
 
 const __dirname=import.meta.dirname
 const app = express();
+
+const connectToDatabase=async()=>{
+  await mongoose.connect(process.env.DATABASE_CONNECTION_STRING)
+}
+connectToDatabase().catch(console.error);
 
 // view engine setup
 app.set('views', join(__dirname, 'views'));

@@ -36,8 +36,8 @@
         placeholder="Summary"
         required
       >
-        <%= !bookExists?'':book.summary%>
-      </textarea>
+<%= !bookExists?'':book.summary%></textarea
+      >
     </p>
     <p class="field">
       <label for="isbn">ISBN: </label>
@@ -52,7 +52,7 @@
     </p>
     <p class="field">
       <label for="genre">Genre: </label>
-      <% for(const genre of genres){%> <% if(genre.checked==='checked'){%>
+      <% for(const genre of genres){ if(genre.checked==='true'){%>
       <input
         type="checkbox"
         name="genre"

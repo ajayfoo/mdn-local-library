@@ -1,0 +1,41 @@
+<%- include('layout',title) %>
+  <h1><%= book.title%></h1>
+<main>
+  <p>
+    <strong>Author: </strong>
+    <a href="<%= book.author.url %>"> <%= book.author.name %> </a>
+  </p>
+  <p>
+    <strong>Summary: </strong>
+
+    <%= book.summary %>
+  </p>
+  <p>
+    <strong>ISBN: </strong>
+
+    <%= book.isbn %>
+  </p>
+  <p><strong>Genre: </strong></p>
+  <% for(let i=0;i<book.genre.length;++i){ %>
+  <a href="<%= book.genre[i].url %>"><%= book.genre[i].name %></a><%if (i < book.genre.length - 1){%>,&nbsp;<%}%>
+    <% } %>
+    <h2>Copies</h2>
+    <% book_instances.forEach(bookInstance=>{%>
+    <%
+    const {url,_id,imprint,status,due_back_formatted}=bookInstance; 
+    %>
+
+      <hr>
+      <span class="<%= status.toLowerCase() %>"><%= status %> </span>
+      <% if(status!=='Available'){ %> (Due: <%= due_back_formatted %>) <% } %>
+      <a href="<%=url%>">
+        <%= _id%>
+      </a>
+      <%})%>
+      <%if(book_instances.length===0){%>
+     <p>
+       There are no copies of this book in the library.
+     </p> 
+     <%}%>
+    
+</main>

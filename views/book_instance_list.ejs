@@ -1,0 +1,20 @@
+<%- include('layout',title) %>
+<h1><%= title%></h1>
+<main>
+  <% if(book_instance_list.length){ %>
+  <ul>
+    <% for(const bookInstance of book_instance_list){ %> <% const
+    {book,imprint,status,due_back}=bookInstance; let className=null; const
+    {url,title}=book; %>
+    <li>
+      <a href="<%= url %>"> <%= title %> : <%=imprint%></a>
+      -
+      <span class="<%= status.toLowerCase() %>"><%= status %> </span>
+      <% if(status!=='Available'){ %> (Due: <%= due_back %>) <% } %>
+    </li>
+    <% } %>
+  </ul>
+  <% } else{%>
+  <p>There are no book copies in this library.</p>
+  <%}%>
+</main>

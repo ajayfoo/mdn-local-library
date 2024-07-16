@@ -27,3 +27,12 @@ nav > ul {
 .first-create-link {
   margin-block-start: 2rem;
 }
+li {
+  margin-block-end: 0.2rem;
+}
+
+span.available {
+  background-color: green;
+  color: white;
+  padding-inline: 1rem;
+}

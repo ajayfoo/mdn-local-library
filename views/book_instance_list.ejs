@@ -4,13 +4,13 @@
   <% if(book_instance_list.length){ %>
   <ul>
     <% for(const bookInstance of book_instance_list){ %> <% const
-    {book,imprint,status,due_back}=bookInstance; let className=null; const
-    {url,title}=book; %>
+    {book,imprint,status,due_back_formatted}=bookInstance; let className=null;
+    const {url,title}=book; %>
     <li>
       <a href="<%= url %>"> <%= title %> : <%=imprint%></a>
       -
       <span class="<%= status.toLowerCase() %>"><%= status %> </span>
-      <% if(status!=='Available'){ %> (Due: <%= due_back %>) <% } %>
+      <% if(status!=='Available'){ %> (Due: <%= due_back_formatted %>) <% } %>
     </li>
     <% } %>
   </ul>

@@ -1,0 +1,17 @@
+<%- include('layout',title) %>
+<main>
+  <h1>ID: <%= book_instance._id%></h1>
+  <p>
+    <strong>Title:</strong>
+    <a href="<%=book_instance.book.url%>"><%= book_instance.book.title %></a>
+  </p>
+  <p><strong>Imprint:</strong> <%=book_instance.imprint%></p>
+  <p>
+    <span class="<%= book_instance.status.toLowerCase()%>">
+      <strong>Status: </strong><%=book_instance.status%>
+    </span>
+  </p>
+  <%if(book_instance.status!='Available'){%>
+  <strong>Due back: </strong>
+  <%=book_instance.due_back%> <%}%>
+</main>

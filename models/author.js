@@ -29,4 +29,15 @@ AuthorSchema.virtual("date_of_birth_formatted").get(function () {
     : "";
 });
 
+const formatDate = (date) => {
+  return DateTime.fromJSDate(date).toLocaleString(DateTime.DATE_MED);
+};
+
+AuthorSchema.virtual("lifespan").get(function () {
+  const dateOfDeath = this.date_of_death
+    ? formatDate(this.date_of_death)
+    : "Present";
+  return formatDate(this.date_of_birth) + " - " + dateOfDeath;
+});
+
 export default mongoose.model("Author", AuthorSchema);

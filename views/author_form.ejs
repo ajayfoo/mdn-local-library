@@ -1,0 +1,57 @@
+<%- include('layout',title) %> <% const authorExists=typeof genre!=='undefined';
+%>
+<main>
+  <h1><%=title%></h1>
+  <form method="POST">
+    <p class="field">
+      <label for="first_name">First Name: </label>
+      <input
+        type="text"
+        id="first_name"
+        name="first_name"
+        required
+        value="<%= !authorExists?'':author.first_name %>"
+      />
+    </p>
+    <p class="field">
+      <label for="family_name">Family Name: </label>
+      <input
+        type="text"
+        id="family_name"
+        name="family_name"
+        required
+        value="<%= !authorExists?'':author.family_name %>"
+      />
+    </p>
+    <p class="field">
+      <label for="date_of_birth">Date Of Birth: </label>
+      <input
+        type="date"
+        id="date_of_birth"
+        name="date_of_birth"
+        required
+        placeholder="dd/mm/yyyy"
+        value="<%= !authorExists?'':author.date_of_birth %>"
+      />
+    </p>
+    <p class="field">
+      <label for="date_of_death">Date Of Death: </label>
+      <input
+        type="date"
+        id="date_of_death"
+        name="date_of_death"
+        required
+        placeholder="dd/mm/yyyy"
+        value="<%= !authorExists?'':author.date_of_death %>"
+      />
+    </p>
+    <button>Submit</button>
+  </form>
+  <% if(typeof errors !=='undefined'){%>
+  <ul>
+    <% for(error of errors){%>
+    <li><%=error.msg%></li>
+    <%}%>
+  </ul>
+  <%}%>
+</main>

@@ -1,0 +1,15 @@
+<%- include('layout',title) %>
+
+<h1><%= title%></h1>
+
+<%if(author_list.length){%>
+<ul>
+  <% author_list.forEach(author=>{ const
+  dob=author.date_of_birth_formatted===''?'':`(${author.date_of_birth_formatted})`;
+  %>
+  <li><a href="<%= author.url%>"> <%= author.name %></a> <%=dob%></li>
+  <%})%>
+</ul>
+<% } else{%>
+<p>There are no authors</p>
+<%}%>

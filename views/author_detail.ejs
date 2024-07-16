@@ -1,0 +1,19 @@
+<%- include('layout',title) %>
+
+<main>
+  <h1>Author: <%= author.name%></h1>
+  <p><%=author.date_of_birth%> - <%=author.date_of_death%></p>
+  <h2>Books</h2>
+  <%if(author_books.length){%>
+  <dl>
+    <% author_books.forEach(book=>{%>
+    <dt>
+      <a href="<%=book.url%>"> <%=book.title%> </a>
+    </dt>
+    <dd><%=book.summary%></dd>
+    <%})%>
+  </dl>
+  <%}else{%>
+  <p>This author has no books.</p>
+  <%}%>
+</main>

@@ -1,0 +1,26 @@
+<%- include('layout',title) %>
+<main>
+  <h1><%=title%></h1>
+  <form method="POST">
+    <p class="field">
+      <% const genreExists=typeof genre!=='undefined'; %>
+      <label for="name">Genre: </label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        placeholder="Fantasy, Poetry etc."
+        required
+        value="<%= !genreExists?'':genre.name %>"
+      />
+    </p>
+    <button>Submit</button>
+  </form>
+  <% if(typeof errors !=='undefined'){%>
+  <ul>
+    <% for(error of errors){%>
+    <li><%=error.msg%></li>
+    <%}%>
+  </ul>
+  <%}%>
+</main>

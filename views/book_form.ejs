@@ -1,0 +1,77 @@
+<%- include('layout',title) %> <% const bookExists=typeof book!=='undefined'; %>
+<main>
+  <h1><%=title%></h1>
+  <form method="POST">
+    <p class="field">
+      <label for="title">Name: </label>
+      <input
+        type="text"
+        id="title"
+        name="title"
+        placeholder="Name Of Book"
+        required
+        value="<%= !bookExists?'':book.title%>"
+      />
+    </p>
+    <p class="field">
+      <label for="author">Author: </label>
+      <select name="author" id="author">
+        <option value="">--Please select an author--</option>
+        <% for(const author of authors){ %> <% const isSelected=bookExists &&
+        author._id.toString()===book.author._id.toString(); if(isSelected){%>
+        <option selected value="<%= author._id.toString()%>">
+          <%= author.name %>
+        </option>
+        <%}else{%>
+        <option value="<%= author._id.toString()%>"><%= author.name %></option>
+        <%}%> <%}%>
+      </select>
+    </p>
+    <p class="field">
+      <label for="summary">Summary: </label>
+      <textarea
+        type="text"
+        id="summary"
+        name="summary"
+        placeholder="Summary"
+        required
+      >
+        <%= !bookExists?'':book.summary%>
+      </textarea>
+    </p>
+    <p class="field">
+      <label for="isbn">ISBN: </label>
+      <input
+        type="text"
+        id="isbn"
+        name="isbn"
+        placeholder="ISBN13"
+        required
+        value="<%= !bookExists?'':book.isbn%>"
+      />
+    </p>
+    <p class="field">
+      <label for="genre">Genre: </label>
+      <% for(const genre of genres){%> <% if(genre.checked==='checked'){%>
+      <input
+        type="checkbox"
+        name="genre"
+        value="<%= genre._id%>"
+        id="<%= genre._id%>"
+        checked
+      />
+      <%}else{%>
+      <input
+        type="checkbox"
+        name="genre"
+        value="<%= genre._id%>"
+        id="<%= genre._id%>"
+      />
+
+      <%}%>
+      <label for="<%= genre._id%>"> <%= genre.name%> </label>
+      <%}%>
+    </p>
+    <button>Submit</button>
+  </form>
+</main>
